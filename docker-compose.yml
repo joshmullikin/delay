@@ -6,7 +6,7 @@ version: '3.4'
 services:
   gateway-dev:
     hostname: gateway-dev
-    image: caapim/gateway:9.3.00
+    image: caapim/gateway:10.1.00
     ports:
       - "8080:8080"
       - "8443:8443"
@@ -15,7 +15,7 @@ services:
     volumes:
       - /opt/SecureSpan/Gateway/node/default/etc/bootstrap/services/restman
       - ./docker/license.xml:/opt/SecureSpan/Gateway/node/default/etc/bootstrap/license/license.xml
-      - ./build/libs/DelayAssertion-1.0.0.jar:/opt/SecureSpan/Gateway/runtime/modules/lib/DelayAssertion-1.0.0.jar
+      - ./build/libs/DelayAssertion-1.1.0.jar:/opt/SecureSpan/Gateway/runtime/modules/lib/DelayAssertion-1.1.0.jar
       - ./docker/delay.req.bundle:/opt/SecureSpan/Gateway/node/default/etc/bootstrap/bundle/delay.req.bundle
     environment:
       ACCEPT_LICENSE: "true"
