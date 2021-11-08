@@ -3,7 +3,7 @@
  * This software may be modified and distributed under the terms
  * of the MIT license.  See the LICENSE file for details.
  */
-package com.l7tech.custom.delay;
+package com.l7tech.custom.delaythreadsafe;
 
 import com.l7tech.policy.assertion.ext.CustomAssertionStatus;
 import com.l7tech.policy.assertion.ext.ServiceInvocation;
@@ -13,12 +13,19 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static java.util.concurrent.TimeUnit.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+//import java.util.concurrent.ScheduledFuture;
 
 public class DelayServiceInvocation extends ServiceInvocation {
     private static final Logger logger = Logger.getLogger(DelayAssertion.class.getName());
+    
 
     @Override
     public CustomAssertionStatus checkRequest(final CustomPolicyContext policyContext) {
+        
         if (!(customAssertion instanceof DelayAssertion)) {
             logger.log(Level.SEVERE,
                     "customAssertion must be of type [{%s}], but it is of type [{%s}] instead",
@@ -31,7 +38,7 @@ public class DelayServiceInvocation extends ServiceInvocation {
 
             return CustomAssertionStatus.FAILED;
         }
-
+        
         final DelayAssertion delayAssertion = (DelayAssertion) customAssertion;
 
         final String[] variablesUsed = delayAssertion.getVariablesUsed();
@@ -42,15 +49,25 @@ public class DelayServiceInvocation extends ServiceInvocation {
         final Optional<Long> delay = DelayAssertion.getValidDelayOrNone(delayMilliSec);
         if (delay.isPresent()) {
             try {
-                Thread.sleep(delay.get());
-            } catch (InterruptedException e) {
+                final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+                //Thread.sleep(delay.get());
+                Callable<String> wait = new Callable<String>() {
+                    public String call() {
+                        return "done";
+                    }
+                };
+                //ScheduledFuture<String> wait = 
+                //    scheduler.schedule( task, delay.get(), MILLISECONDS);
+                //wait.get();
+                auditWarn("Wait " + scheduler.schedule(wait, delay.get(), MILLISECONDS).get());
+                scheduler.shutdown();
+            } catch (Exception e) {
                 auditWarn("Exception caught: " + e.getMessage());
                 return CustomAssertionStatus.FALSIFIED;
             }
         } else {
             return CustomAssertionStatus.FALSIFIED;
         }
-
         return CustomAssertionStatus.NONE;
     }
 }
