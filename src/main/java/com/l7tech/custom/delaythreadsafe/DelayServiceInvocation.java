@@ -49,6 +49,7 @@ public class DelayServiceInvocation extends ServiceInvocation {
         final Optional<Long> delay = DelayAssertion.getValidDelayOrNone(delayMilliSec);
         if (delay.isPresent()) {
             try {
+                // TODO move to a thread pool and add pool size configuration variable
                 final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
                 Callable<String> wait = new Callable<String>() {
                     public String call() {
