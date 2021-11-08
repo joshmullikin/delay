@@ -50,15 +50,11 @@ public class DelayServiceInvocation extends ServiceInvocation {
         if (delay.isPresent()) {
             try {
                 final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
-                //Thread.sleep(delay.get());
                 Callable<String> wait = new Callable<String>() {
                     public String call() {
                         return "done";
                     }
                 };
-                //ScheduledFuture<String> wait = 
-                //    scheduler.schedule( task, delay.get(), MILLISECONDS);
-                //wait.get();
                 auditWarn("Wait " + scheduler.schedule(wait, delay.get(), MILLISECONDS).get());
                 scheduler.shutdown();
             } catch (Exception e) {
