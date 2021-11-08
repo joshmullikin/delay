@@ -3,9 +3,9 @@
  * This software may be modified and distributed under the terms
  * of the MIT license.  See the LICENSE file for details.
  */
-package com.l7tech.custom.delay.console;
+package com.l7tech.custom.delaythreadsafe.console;
 
-import com.l7tech.custom.delay.DelayAssertion;
+import com.l7tech.custom.delaythreadsafe.DelayAssertion;
 import com.l7tech.policy.assertion.ext.AssertionEditor;
 import com.l7tech.policy.assertion.ext.CustomAssertion;
 import com.l7tech.policy.assertion.ext.CustomAssertionUI;

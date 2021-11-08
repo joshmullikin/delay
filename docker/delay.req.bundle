@@ -6,12 +6,12 @@
 <l7:Bundle xmlns:l7="http://ns.l7tech.com/2010/04/gateway-management">
     <l7:References>
         <l7:Item>
-            <l7:Name>Delay Assertion</l7:Name>
+            <l7:Name>Delay Thread Safe Assertion</l7:Name>
             <l7:Id>d7ea430516034fb2a607c7a0067d6611</l7:Id>
             <l7:Type>FOLDER</l7:Type>
             <l7:Resource>
                 <l7:Folder folderId="0000000000000000ffffffffffffec76" id="d7ea430516034fb2a607c7a0067d6611">
-                    <l7:Name>Delay Assertion</l7:Name>
+                    <l7:Name>Delay Thread Safe Assertion</l7:Name>
                 </l7:Folder>
             </l7:Resource>
         </l7:Item>
@@ -59,7 +59,7 @@
                                 &lt;wsp:All wsp:Usage=&quot;Required&quot;&gt;
                                 &lt;L7p:ComparisonAssertion&gt;
                                 &lt;L7p:CaseSensitive booleanValue=&quot;false&quot;/&gt;
-                                &lt;L7p:Expression1 stringValue=&quot;${request.http.parameters.delay}&quot;/&gt;
+                                &lt;L7p:Expression1 stringValue=&quot;${request.http.parameters.DelayThreadSafe}&quot;/&gt;
                                 &lt;L7p:ExpressionIsVariable booleanValue=&quot;false&quot;/&gt;
                                 &lt;L7p:Operator operatorNull=&quot;null&quot;/&gt;
                                 &lt;L7p:Predicates predicates=&quot;included&quot;&gt;
@@ -81,7 +81,7 @@
                                 &lt;/wsp:All&gt;
                                 &lt;wsp:All wsp:Usage=&quot;Required&quot;&gt;
                                 &lt;L7p:CustomAssertion&gt;
-                                &lt;L7p:base64SerializedValue&gt;rO0ABXNyADFjb20ubDd0ZWNoLnBvbGljeS5hc3NlcnRpb24uQ3VzdG9tQXNzZXJ0aW9uSG9sZGVyZtcreFwddTICAAlaAAxpc1VpQXV0b09wZW5MAApjYXRlZ29yaWVzdAAPTGphdmEvdXRpbC9TZXQ7TAAIY2F0ZWdvcnl0ACpMY29tL2w3dGVjaC9wb2xpY3kvYXNzZXJ0aW9uL2V4dC9DYXRlZ29yeTtMAA9jdXN0b21Bc3NlcnRpb250ADFMY29tL2w3dGVjaC9wb2xpY3kvYXNzZXJ0aW9uL2V4dC9DdXN0b21Bc3NlcnRpb247TAAUY3VzdG9tTW9kdWxlRmlsZU5hbWV0ABJMamF2YS9sYW5nL1N0cmluZztMAA9kZXNjcmlwdGlvblRleHRxAH4ABEwAD3BhbGV0dGVOb2RlTmFtZXEAfgAETAAOcG9saWN5Tm9kZU5hbWVxAH4ABEwAHnJlZ2lzdGVyZWRDdXN0b21GZWF0dXJlU2V0TmFtZXEAfgAEeHIAJWNvbS5sN3RlY2gucG9saWN5LmFzc2VydGlvbi5Bc3NlcnRpb27bX2OZPL2isQIAAloAB2VuYWJsZWRMABBhc3NlcnRpb25Db21tZW50dAAvTGNvbS9sN3RlY2gvcG9saWN5L2Fzc2VydGlvbi9Bc3NlcnRpb24kQ29tbWVudDt4cAFwAXNyABFqYXZhLnV0aWwuSGFzaFNldLpEhZWWuLc0AwAAeHB3DAAAAAI/QAAAAAAAAXNyAChjb20ubDd0ZWNoLnBvbGljeS5hc3NlcnRpb24uZXh0LkNhdGVnb3J5WrCcZaFE/jUCAAJJAAVteUtleUwABm15TmFtZXEAfgAEeHAAAAALdAAQQ3VzdG9tQXNzZXJ0aW9uc3hwc3IAJmNvbS5sN3RlY2guY3VzdG9tLmRlbGF5LkRlbGF5QXNzZXJ0aW9uX+n9m3odanICAAFMAA1kZWxheU1pbGxpU2VjcQB+AAR4cHQAICR7cmVxdWVzdC5odHRwLnBhcmFtZXRlcnMuZGVsYXl9dAAYRGVsYXlBc3NlcnRpb24tMS4wLjAuamFydAAFRGVsYXl0AAVEZWxheXQABURlbGF5cA==&lt;/L7p:base64SerializedValue&gt;
+                                &lt;L7p:base64SerializedValue&gt;BXNyMWNvbS5sN3RlY2gucG9saWN5LmFzc2VydGlvbi5DdXN0b21Bc3NlcnRpb25Ib2xkZXJmK3hcHXUyAglaDGlzVWlBdXRvT3BlbkwKY2F0ZWdvcmllc3QPTGphdmEvdXRpbC9TZXQ7TAhjYXRlZ29yeXQqTGNvbS9sN3RlY2gvcG9saWN5L2Fzc2VydGlvbi9leHQvQ2F0ZWdvcnk7TA9jdXN0b21Bc3NlcnRpb250MUxjb20vbDd0ZWNoL3BvbGljeS9hc3NlcnRpb24vZXh0L0N1c3RvbUFzc2VydGlvbjtMFGN1c3RvbU1vZHVsZUZpbGVOYW1ldBJMamF2YS9sYW5nL1N0cmluZztMD2Rlc2NyaXB0aW9uVGV4dHF+BEwPcGFsZXR0ZU5vZGVOYW1lcX4ETA5wb2xpY3lOb2RlTmFtZXF+BEwecmVnaXN0ZXJlZEN1c3RvbUZlYXR1cmVTZXROYW1lcX4EeHIlY29tLmw3dGVjaC5wb2xpY3kuYXNzZXJ0aW9uLkFzc2VydGlvbl9jPAICWgdlbmFibGVkTBBhc3NlcnRpb25Db21tZW50dC9MY29tL2w3dGVjaC9wb2xpY3kvYXNzZXJ0aW9uL0Fzc2VydGlvbiRDb21tZW50O3hwAXABc3IRamF2YS51dGlsLkhhc2hTZXRENAN4cHcMAj9AAXNyKGNvbS5sN3RlY2gucG9saWN5LmFzc2VydGlvbi5leHQuQ2F0ZWdvcnlaZUQ1AgJJBW15S2V5TAZteU5hbWVxfgR4cAt0EEN1c3RvbUFzc2VydGlvbnN4cHNyJmNvbS5sN3RlY2guY3VzdG9tLmRlbGF5LkRlbGF5VGhyZWFkU2FmZUFzc2VydGlvbl96HWpyAgFMCmRlbGF5TWlsbGlTZWNxfgR4cHQgJHtyZXF1ZXN0Lmh0dHAucGFyYW1ldGVycy5kZWxheX10GERlbGF5VGhyZWFkU2FmZUFzc2VydGlvbi0xLjAuMC5qYXJ0BURlbGF5dAVEZWxheXQFRGVsYXlw==&lt;/L7p:base64SerializedValue&gt;
                                 &lt;/L7p:CustomAssertion&gt;
                                 &lt;L7p:HardcodedResponse&gt;
                                 &lt;L7p:Base64ResponseBody stringValue=&quot;RGVsYXllZDogJHtyZXF1ZXN0Lmh0dHAucGFyYW1ldGVycy5kZWxheX0=&quot;/&gt;

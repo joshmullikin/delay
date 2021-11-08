@@ -6,17 +6,19 @@ version: '3.4'
 services:
   gateway-dev:
     hostname: gateway-dev
-    image: caapim/gateway:10.1.00
+    image: caapim/gateway:9.4.00
     ports:
       - "8080:8080"
       - "8443:8443"
       - "9443:9443"
       - "8000:8000"
     volumes:
-      - /opt/SecureSpan/Gateway/node/default/etc/bootstrap/services/restman
+      - ./docker/restman:/opt/SecureSpan/Gateway/node/default/etc/bootstrap/services/restman
       - ./docker/license.xml:/opt/SecureSpan/Gateway/node/default/etc/bootstrap/license/license.xml
-      - ./build/libs/DelayAssertion-1.1.0.jar:/opt/SecureSpan/Gateway/runtime/modules/lib/DelayAssertion-1.1.0.jar
       - ./docker/delay.req.bundle:/opt/SecureSpan/Gateway/node/default/etc/bootstrap/bundle/delay.req.bundle
+      - ./build/libs/DelayThreadSafeAssertion-1.1.0.jar:/opt/SecureSpan/Gateway/runtime/modules/lib/DelayThreadSafeAssertion-1.1.0.jar
+      - ./build/resources/main/custom_assertions.properties:/opt/SecureSpan/Gateway/node/default/etc/conf/delayThreadSafe.properties
+
     environment:
       ACCEPT_LICENSE: "true"
       SSG_ADMIN_USERNAME: "admin"
